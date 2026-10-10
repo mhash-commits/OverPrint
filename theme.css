@@ -1,0 +1,82 @@
+/* Overprint design tokens. Edit these to re-theme the whole extension.
+   Direction: a drafting sheet. Cool paper, ink, and one redline colour (--as-guide)
+   reserved for measurements and selection. */
+:root {
+  color-scheme: light dark;
+
+  --as-paper: #e9edf2;
+  --as-sheet: #ffffff;
+  --as-wash: #f3f5f8;
+  --as-ink: #0f1a26;
+  --as-muted: #5a6778;
+  --as-line: #cfd6df;
+  --as-grid: rgba(15, 26, 38, 0.06);
+
+  --as-guide: #e6195f;
+  --as-danger: #b3261e;
+
+  --as-font: "Segoe UI Variable Text", "SF Pro Text", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --as-font-display: "Segoe UI Variable Display", "SF Pro Display", var(--as-font);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --as-paper: #0e141b;
+    --as-sheet: #151c25;
+    --as-wash: #1a232e;
+    --as-ink: #e9eef4;
+    --as-muted: #97a4b4;
+    --as-line: #2a3542;
+    --as-grid: rgba(255, 255, 255, 0.05);
+
+    --as-guide: #ff6a96;
+    --as-danger: #ff8a80;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--as-font);
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--as-ink);
+  background-color: var(--as-paper);
+}
+
+:focus-visible {
+  outline: 2px solid var(--as-guide);
+  outline-offset: 2px;
+}
+
+/* Buttons shared by popup and options */
+.btn {
+  font: inherit;
+  font-weight: 600;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.12s ease, opacity 0.12s ease, color 0.12s ease;
+}
+.btn-primary { background: var(--as-ink); color: var(--as-sheet); }
+.btn-primary:hover { opacity: 0.88; }
+.btn-quiet { background: transparent; color: var(--as-ink); border-color: var(--as-line); }
+.btn-quiet:hover { background: var(--as-wash); }
+.btn-quiet.error { color: var(--as-danger); border-color: var(--as-danger); }
+
+.link-btn {
+  font: inherit;
+  font-size: 13px;
+  background: none;
+  border: none;
+  padding: 4px 0;
+  color: var(--as-muted);
+  cursor: pointer;
+}
+.link-btn:hover { color: var(--as-ink); text-decoration: underline; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}

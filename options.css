@@ -1,0 +1,173 @@
+.layout {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 40px 48px;
+  align-items: start;
+}
+
+/* ---------- Left rail ---------- */
+.rail {
+  position: sticky;
+  top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-family: var(--as-font-display); }
+.brand img { width: 28px; height: 28px; border-radius: 6px; object-fit: cover; }
+
+.rail h1 {
+  margin: 8px 0 0;
+  font-family: var(--as-font-display);
+  font-size: 30px;
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.count { margin: -12px 0 0; color: var(--as-muted); font-variant-numeric: tabular-nums; }
+
+/* Drop zone, framed with crop marks */
+.drop {
+  --mark: var(--as-muted);
+  padding: 26px 22px 24px;
+  cursor: pointer;
+  background:
+    linear-gradient(var(--mark), var(--mark)) 0 0 / 16px 1px no-repeat,
+    linear-gradient(var(--mark), var(--mark)) 0 0 / 1px 16px no-repeat,
+    linear-gradient(var(--mark), var(--mark)) 100% 0 / 16px 1px no-repeat,
+    linear-gradient(var(--mark), var(--mark)) 100% 0 / 1px 16px no-repeat,
+    linear-gradient(var(--mark), var(--mark)) 0 100% / 16px 1px no-repeat,
+    linear-gradient(var(--mark), var(--mark)) 0 100% / 1px 16px no-repeat,
+    linear-gradient(var(--mark), var(--mark)) 100% 100% / 16px 1px no-repeat,
+    linear-gradient(var(--mark), var(--mark)) 100% 100% / 1px 16px no-repeat,
+    var(--as-sheet);
+}
+.drop:hover, .drop.dragging { --mark: var(--as-guide); }
+.drop-title { margin: 0 0 6px; font-weight: 700; font-size: 16px; }
+.drop-hint { margin: 0 0 16px; color: var(--as-muted); font-size: 13px; }
+.drop input[type="file"] { display: none; }
+
+/* Option row with a switch */
+.option { display: flex; gap: 12px; align-items: flex-start; cursor: pointer; font-weight: 600; }
+.option small { display: block; margin-top: 2px; font-weight: 400; color: var(--as-muted); font-size: 12.5px; }
+
+.switch {
+  appearance: none;
+  -webkit-appearance: none;
+  flex: none;
+  position: relative;
+  width: 34px;
+  height: 20px;
+  margin: 1px 0 0;
+  border-radius: 10px;
+  background: var(--as-line);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+.switch::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--as-sheet);
+  transition: transform 0.15s ease;
+}
+.switch:checked { background: var(--as-guide); }
+.switch:checked::after { transform: translateX(14px); }
+
+#reset-btn { align-self: flex-start; color: var(--as-danger); }
+
+/* ---------- Proof sheet ---------- */
+.sheet {
+  min-height: 70vh;
+  padding: 32px;
+  border: 1px solid var(--as-line);
+  border-radius: 4px;
+  background-color: var(--as-sheet);
+  background-image:
+    linear-gradient(var(--as-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--as-grid) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 36px 32px;
+}
+
+.empty {
+  margin: 0;
+  max-width: 34ch;
+  color: var(--as-muted);
+  font-size: 15px;
+}
+
+.tile { margin: 0; min-width: 120px; max-width: 100%; }
+
+/* Creative with crop marks just outside its corners */
+.frame {
+  --mark: var(--as-muted);
+  padding: 10px;
+  background:
+    linear-gradient(var(--mark), var(--mark)) 0 0 / 8px 1px no-repeat,
+    linear-gradient(var(--mark), var(--mark)) 0 0 / 1px 8px no-repeat,
+    linear-gradient(var(--mark), var(--mark)) 100% 0 / 8px 1px no-repeat,
+    linear-gradient(var(--mark), var(--mark)) 100% 0 / 1px 8px no-repeat,
+    linear-gradient(var(--mark), var(--mark)) 0 100% / 8px 1px no-repeat,
+    linear-gradient(var(--mark), var(--mark)) 0 100% / 1px 8px no-repeat,
+    linear-gradient(var(--mark), var(--mark)) 100% 100% / 8px 1px no-repeat,
+    linear-gradient(var(--mark), var(--mark)) 100% 100% / 1px 8px no-repeat;
+}
+.frame img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 340px;
+  max-height: 220px;
+  background:
+    conic-gradient(var(--as-wash) 25%, transparent 0 50%, var(--as-wash) 0 75%, transparent 0) 0 0 / 16px 16px,
+    var(--as-sheet);
+}
+
+.caption { padding: 0 10px; }
+.size {
+  color: var(--as-guide);
+  font-size: 12px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.name {
+  width: 0;
+  min-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--as-muted);
+  font-size: 12px;
+}
+.remove {
+  font: inherit;
+  font-size: 12px;
+  padding: 2px 0;
+  background: none;
+  border: none;
+  color: var(--as-muted);
+  cursor: pointer;
+}
+.remove:hover { color: var(--as-danger); text-decoration: underline; }
+.caption-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+
+@media (max-width: 800px) {
+  .layout { grid-template-columns: 1fr; padding: 20px; gap: 24px; }
+  .rail { position: static; }
+  .sheet { padding: 20px; min-height: 0; }
+}

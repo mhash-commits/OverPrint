@@ -1,0 +1,111 @@
+body {
+  width: 300px;
+  background: var(--as-sheet);
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px 12px;
+}
+.brand { display: flex; align-items: center; gap: 10px; }
+.brand img { width: 26px; height: 26px; border-radius: 6px; object-fit: cover; }
+.brand h1 {
+  margin: 0;
+  font-family: var(--as-font-display);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* Miniature page that shows the creative in its slot, with a redline size callout */
+.proof {
+  margin: 0 16px;
+  padding: 14px;
+  min-height: 168px;
+  border: 1px solid var(--as-line);
+  border-radius: 6px;
+  background-color: var(--as-wash);
+  background-image:
+    linear-gradient(var(--as-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--as-grid) 1px, transparent 1px);
+  background-size: 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.bar { height: 6px; border-radius: 3px; background: var(--as-line); }
+.b1 { width: 58%; height: 8px; }
+.b2 { width: 92%; }
+.b3 { width: 74%; }
+
+.stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 0;
+  flex: 1;
+}
+
+.dim {
+  position: relative;
+  height: 14px;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--as-guide);
+  font-size: 11px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  border-left: 1px solid currentColor;
+  border-right: 1px solid currentColor;
+  background: linear-gradient(currentColor, currentColor) center / 100% 1px no-repeat;
+}
+.dim[hidden] { display: none; }
+.dim span { background: var(--as-wash); padding: 0 6px; white-space: nowrap; }
+
+.slot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 56px;
+  border: 1px dashed var(--as-muted);
+  border-radius: 2px;
+  color: var(--as-muted);
+  font-size: 12px;
+  background: var(--as-sheet);
+  overflow: hidden;
+}
+.slot.filled { border: none; box-shadow: 0 0 0 1px var(--as-guide); }
+.slot img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.slot img[hidden], .slot span[hidden] { display: none; }
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px 16px 16px;
+}
+
+select {
+  width: 100%;
+  font: inherit;
+  padding: 9px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--as-line);
+  background-color: var(--as-sheet);
+  color: var(--as-ink);
+  cursor: pointer;
+}
+
+.status {
+  margin: 0;
+  min-height: 18px;
+  font-size: 12px;
+  color: var(--as-danger);
+}
